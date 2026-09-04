@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>邮件中心 · 运营台</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="app">
+  <!-- 侧栏 -->
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-mark"></span>
+      <div>
+        <div class="brand-name">邮件中心</div>
+        <div class="brand-sub">运营台</div>
+      </div>
+    </div>
+    <nav class="nav" id="nav">
+      <button class="nav-item active" data-view="dashboard">概览</button>
+      <button class="nav-item" data-view="inbox">收件箱 <span class="nav-badge" id="inbox-badge"></span></button>
+      <button class="nav-item" data-view="conversations">会话</button>
+      <button class="nav-item" data-view="compose">写邮件</button>
+      <div class="nav-sep"></div>
+      <button class="nav-item" data-view="campaigns">群发任务</button>
+      <button class="nav-item" data-view="tracking">追踪统计</button>
+      <button class="nav-item" data-view="leads">意向客户</button>
+      <div class="nav-sep"></div>
+      <button class="nav-item" data-view="templates">模板库</button>
+      <button class="nav-item" data-view="blacklist">黑名单</button>
+      <button class="nav-item" data-view="accounts">邮箱管理</button>
+    </nav>
+    <div class="sidebar-foot">
+      <button class="poll-btn" id="poll-btn">刷新收件箱</button>
+      <div class="sched-dot"><span class="dot live"></span>后台调度运行中</div>
+    </div>
+  </aside>
+
+  <!-- 主区 -->
+  <main class="main">
+    <header class="topbar">
+      <h1 class="view-title" id="view-title">概览</h1>
+      <div class="quota" id="quota" title="今日各账号发送配额">今日发送 — / —</div>
+    </header>
+
+    <section class="view" id="v-dashboard"></section>
+    <section class="view hidden" id="v-inbox">
+      <div class="list-toolbar">
+        <label class="chk"><input type="checkbox" id="inbox-unread"> 只看未读</label>
+        <select id="inbox-account"><option value="">全部邮箱</option></select>
+      </div>
+      <div id="inbox-list"></div>
+    </section>
+    <section class="view hidden" id="v-conversations"><div id="conv-list"></div></section>
+    <section class="view hidden" id="v-compose"></section>
+    <section class="view hidden" id="v-campaigns"><div id="campaign-list"></div></section>
+    <section class="view hidden" id="v-tracking"><div id="tracking-body"></div></section>
+    <section class="view hidden" id="v-leads"><div id="leads-body"></div></section>
+    <section class="view hidden" id="v-templates"><div id="template-list"></div></section>
+    <section class="view hidden" id="v-blacklist"><div id="blacklist-body"></div></section>
+    <section class="view hidden" id="v-accounts"><div id="account-list"></div></section>
+  </main>
+</div>
+
+<!-- 邮件阅读 / 通用弹窗 -->
+<div class="modal hidden" id="modal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h2 id="modal-title">标题</h2>
+      <button class="modal-close" id="modal-close">×</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<div class="toast hidden" id="toast"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
